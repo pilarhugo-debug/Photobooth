@@ -16,11 +16,6 @@ snap.addEventListener("click", () => {
 
   const ctx = canvas.getContext("2d");
 
-  ctx.save();
-
-  ctx.scale(-1, 1);
-  ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
-
-  ctx.restore();
+  ctx.drawImage(video, 0, 0);
 
 });
