@@ -10,17 +10,17 @@ h1 {
 }
 
 video, canvas {
-  width: 300px;
+   width: 300px;
   border: 6px solid cyan;
   border-radius: 20px;
   margin-top: 20px;
-
-  transform: scaleX(-1);
 
   filter:
     contrast(1.2)
     saturate(1.4)
     blur(0.3px);
+
+  transform: rotateY(180deg);
 }
 
 button {
