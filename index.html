@@ -21,6 +21,14 @@
       padding: 20px;
     }
 
+    navigator.mediaDevices.getUserMedia({
+  video: {
+    width: { ideal: 1920 },
+    height: { ideal: 1080 },
+    facingMode: "user"
+  }
+  })
+    
     h1 {
       font-family: 'Press Start 2P', monospace;
       font-size: clamp(16px, 4vw, 28px);
@@ -230,16 +238,21 @@
     }
 
     // Captura una foto del video
-    function capturePhoto() {
-      const w = video.videoWidth;
-      const h = video.videoHeight;
-      const offscreen = document.createElement("canvas");
-      offscreen.width = w;
-      offscreen.height = h;
-      const ctx = offscreen.getContext("2d");
-      ctx.drawImage(video, 0, 0, w, h);
-      return offscreen.toDataURL("image/png");
-    }
+function capturePhoto() {
+  const w = video.videoWidth;
+  const h = video.videoHeight;
+  const offscreen = document.createElement("canvas");
+  offscreen.width = w;
+  offscreen.height = h;
+  const ctx = offscreen.getContext("2d");
+
+  // espejo
+  ctx.translate(w, 0);
+  ctx.scale(-1, 1);
+
+  ctx.drawImage(video, 0, 0, w, h);
+ return offscreen.toDataURL("image/png");
+}
 
     // Arma la tira de fotos
     function buildStrip(photoDataUrls) {
