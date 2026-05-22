@@ -20,7 +20,7 @@ video {
     saturate(1.4)
     blur(0.3px);
 
-  transform: rotateY(180deg);
+  transform: scaleX(-1);
 }
 
 canvas {
